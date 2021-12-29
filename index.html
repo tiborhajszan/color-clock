@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <title>Color Clock</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=viewport-width initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="main.css">
+  </head>
+  
+  <body>
+    <div id="clock">00:00:00</div>
+    <script>
+      function colorClock() 
+      {
+        var date = new Date();
+        var hours = date.getHours();
+        if (hours < 10) {
+          hours = '0' + hours; }
+        var minutes = date.getMinutes();
+        if (minutes < 10) {
+          minutes = '0' + minutes; }
+        var seconds = date.getSeconds();
+        if (seconds < 10) {
+          seconds = '0' + seconds; }
+  
+        var clockFace = hours + ':' + minutes + ':' + seconds;
+        document.getElementById('clock').innerHTML = clockFace;
+  
+        hours *= 10.6;
+        minutes *= 4.25;
+        seconds *= 4.25;
+        var rgbColor = 'rgb(' + hours + ',' + minutes + ',' + seconds + ')';
+        document.body.style.background = rgbColor;
+  
+        setTimeout(function() {colorClock();}, 1000);
+      }
+      colorClock();
+    </script>
+  </body>
+  
+</html>
